@@ -1,0 +1,28 @@
+main {
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+p {
+    font-size: 20px;
+}
+
+#highScoresBtn {
+    color: purple;
+    border: none;
+    font-size: 16px;
+}
+
+#timerDisplay {
+    float: right;
+}
+
+#startBtn {
+    color: white;
+    background-color: purple;
+    border-radius: 8px;
+    font-size: 20px;
+}
