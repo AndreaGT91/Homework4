@@ -1,17 +1,45 @@
+* {
+    box-sizing: border-box;
+  }
+  
 main {
-    text-align: center;
+    width: 700px;
+    margin: auto;
 }
 
 h1 {
     font-size: 36px;
 }
 
-p {
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-style: italic;
+    color: gray;
+    text-align: left;
+}
+
+p, label, input {
     font-size: 20px;
 }
 
+.goBtn {
+    color: white;
+    background-color: rgb(100, 0, 140);
+    border-radius: 8px;
+    font-size: 20px;
+    margin: 2px;
+}
+
+.quizPage {
+    position: relative;
+    text-align: left;
+}
+
 #highScoresBtn {
-    color: purple;
+    color: rgb(100, 0, 140);
     border: none;
     font-size: 16px;
 }
@@ -20,9 +48,13 @@ p {
     float: right;
 }
 
-#startBtn {
-    color: white;
-    background-color: purple;
-    border-radius: 8px;
+#welcome {
+    text-align: center;
+}
+
+#highscoreList {
+    background-color: rgb(235, 218, 255);
     font-size: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
