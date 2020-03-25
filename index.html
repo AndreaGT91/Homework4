@@ -18,47 +18,47 @@
             <h1>Coding Quiz Challenge</h1>
             <p>Try to answer the following code-related questions within the time limit.<br> 
             Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-            <button type="button" class="goBtn" id="startBtn">Start Quiz</button>
+            <button type="button" id="startBtn">Start Quiz</button>
         </section>
 
         <section class="quizPage" id="page1" value="3" hidden>
             <h2>Commonly used data types DO NOT include:</h2>
-            <button type="button" class="goBtn" id="answerBtn" value="1">1. strings</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="2">2. boolean</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="3">3. alerts</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="4">4. numbers</button>
+            <button type="button" class="answerBtn" value="1">1. strings</button><br>
+            <button type="button" class="answerBtn" value="2">2. boolean</button><br>
+            <button type="button" class="answerBtn" value="3">3. alerts</button><br>
+            <button type="button" class="answerBtn" value="4">4. numbers</button>
         </section>
 
         <section class="quizPage" id="page2" value="3" hidden>
             <h2>The condition in an if / else statement is enclosed within __________.</h2>
-            <button type="button" class="goBtn" id="answerBtn" value="1">1. quotes " "</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="2">2. curly brackets { }</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="3">3. parentheses ( )</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="4">4. square brackets [ ]</button>            
+            <button type="button" class="answerBtn" value="1">1. quotes " "</button><br>
+            <button type="button" class="answerBtn" value="2">2. curly brackets { }</button><br>
+            <button type="button" class="answerBtn" value="3">3. parentheses ( )</button><br>
+            <button type="button" class="answerBtn" value="4">4. square brackets [ ]</button>            
         </section>
 
         <section class="quizPage" id="page3" value="4" hidden>
             <h2>Arrays in JavaScript can be used to store _________.</h2>
-            <button type="button" class="goBtn" id="answerBtn" value="1">1. numbers and strings</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="2">2. other arrays</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="3">3. booleans</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="4">4. all of the above</button>            
+            <button type="button" class="answerBtn" value="1">1. numbers and strings</button><br>
+            <button type="button" class="answerBtn" value="2">2. other arrays</button><br>
+            <button type="button" class="answerBtn" value="3">3. booleans</button><br>
+            <button type="button" class="answerBtn" value="4">4. all of the above</button>            
         </section>
 
         <section class="quizPage" id="page4" value="2" hidden>
             <h2>String values must be enclosed within __________ when being assigned to variables.</h2>
-            <button type="button" class="goBtn" id="answerBtn" value="1">1. commas , ,</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="2">2. quotes " "</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="3">3. curly brackets { }</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="4">4. parentheses ( )</button>            
+            <button type="button" class="answerBtn" value="1">1. commas , ,</button><br>
+            <button type="button" class="answerBtn" value="2">2. quotes " "</button><br>
+            <button type="button" class="answerBtn" value="3">3. curly brackets { }</button><br>
+            <button type="button" class="answerBtn" value="4">4. parentheses ( )</button>            
         </section>
 
         <section class="quizPage" id="page5" value="4" hidden>
             <h2>A very useful tool used during development and debugging for printing content to the debugger is:</h2>
-            <button type="button" class="goBtn" id="answerBtn" value="1">1. JavaScript</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="2">2. terminal / bash</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="3">3. for loops</button><br>
-            <button type="button" class="goBtn" id="answerBtn" value="4">4. console.log</button>            
+            <button type="button" class="answerBtn" value="1">1. JavaScript</button><br>
+            <button type="button" class="answerBtn" value="2">2. terminal / bash</button><br>
+            <button type="button" class="answerBtn" value="3">3. for loops</button><br>
+            <button type="button" class="answerBtn" value="4">4. console.log</button>            
         </section>
 
         <section id="complete" hidden>
@@ -66,7 +66,7 @@
             <p>Your final score is <span id="finalScore">0</span>.</p>
             <label for="initials">Enter initials:</label>
             <input type="text" maxlength="3" id="initials" name="initials">
-            <button type="submit" class="goBtn" id="initialsBtn">Submit</button>
+            <button type="submit" id="initialsBtn">Submit</button>
         </section>
 
         <section id="correct" hidden>
@@ -85,8 +85,8 @@
             <h1>Highscores</h1>
             <ol type="1" id="highscoreList">
             </ol>
-            <button type="button" class="goBtn" id="goBackBtn">Go Back</button>
-            <button type="reset" class="goBtn" id="clearScores">Clear Highscores</button>
+            <button type="button" id="goBackBtn">Go Back</button>
+            <button type="reset" id="clearScores">Clear Highscores</button>
         </section>
     </main>
 
