@@ -102,7 +102,20 @@ function answerButtons(event) {
 // Onclick event for "Submit" button on Complete section
 function saveInitials() {
     var initialsInput = document.getElementById("initials"); // get Input element
-    highScores.splice(0, 0, initialsInput.value + " - " + timerVal.toString()); // add high score to beginning
+    var score = 0; // for retrieving scores from highScores list
+    var newIndex = 0; // index of new high score
+
+    // Determine where in the list the new initials belong
+    for (newIndex=0; newIndex < highScores.length; newIndex++) {
+        // get just the score out of the string
+        score = parseInt(highScores[newIndex].substr(-2));
+        // If current score (timerVal) is greater than the indexed score, we've found where it goes
+        if (timerVal > score) {
+            break;
+        }
+    }
+
+    highScores.splice(newIndex, 0, initialsInput.value + " - " + timerVal.toString()); // add high score to beginning
     initialsInput.value = ""; // clear Input element
     setHighScores(); // save new highscores list to localstorage
     displayHighScores(); // display the highscores
