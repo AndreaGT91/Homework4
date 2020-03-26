@@ -1,6 +1,9 @@
+const hsStorage = "codingQuizHighScoresList"; // name used for localstorage
+const lastPage = 6; // last page that can be displayed
+
 var timerVal = 75; // starting time
 var highScores = []; // high score list initialization
-var hsStorage = "codingQuizHighScoresList"; // name used for localstorage
+var interval; // timer
 
 getHighScores(); // retrieve high score list from local storage
 setAnswerButtons(); // add event listeners to all answer buttons
@@ -16,6 +19,8 @@ document.getElementById("initialsBtn").addEventListener("click", saveInitials);
 function displayHighScores() {
     var highscoresSection = document.getElementById("highscores");
     var highscoresList = document.getElementById("highscoreList");
+
+    clearInterval(interval); // Just in case timer is running
 
     // Delete current list items
     clearHighscoresList();
@@ -35,6 +40,10 @@ function displayHighScores() {
 
 // Onclick event for "Go Back" button on Highscores section
 function goBack() {
+    // Reset timer
+    timerVal = 75;
+    document.getElementById("timerValue").textContent = timerVal.toString();
+
     // Hide all sections, then unhide navigation bar and welcome section
     hideAll();
     document.querySelector("nav").hidden = false;
@@ -57,7 +66,11 @@ function startQuiz() {
     hideAll();
     document.getElementById("page1").hidden = false;
 
-    // Start timer
+    // Start timer:
+    timerVal = 76; // start with 76 seconds - will be decremented before display
+    clearInterval(interval); // make sure no timer is already running
+    //Call updateTimer once every second
+    interval = setInterval(updateTimer, 1000);
 }
 
 // Onclick event for all answer buttons
@@ -67,17 +80,13 @@ function answerButtons(event) {
     var correctAnswer = event.target.parentElement.getAttribute("value"); // index of correct answer
     var userAnswer = event.target.value; // index of user's answer
 
-    // If quiz is done, stop timer, update score on Complete section
-    if (nextPage === 6) {
-        // stop timer
-        document.getElementById("finalScore").textContent = timerVal.toString();
+    // If time is up, go to last page; can be less than 0 because 10 subtracted for wrong answers
+    if (timerVal <= 0) {
+        nextPage = lastPage;
     }
 
-    // Hide everything, then determine which sections to unhide
-    hideAll();
-
     // Advance to next page
-    document.getElementsByName(nextPage.toString())[0].hidden = false;
+    goToPage(nextPage);
 
     // If user entered correct answer, then display "Correct"
     if (userAnswer === correctAnswer) {
@@ -99,20 +108,20 @@ function saveInitials() {
     displayHighScores(); // display the highscores
 }
 
+// Adds onclick event to all 20 answer buttons
+function setAnswerButtons() {
+    var answerBtns = document.getElementsByClassName("answerBtn")
+    for (var i = 0; i < answerBtns.length; i++) {
+        answerBtns[i].addEventListener("click", answerButtons);
+    }
+}
+
 // Hides all sections; used before displaying current section
 function hideAll() {
     var sections = document.getElementsByTagName("section");
 
     for (var i=0; i < sections.length; i++) {
         sections[i].hidden = true;
-    }
-}
-
-// Adds onclick event to all 20 answer buttons
-function setAnswerButtons() {
-    var answerBtns = document.getElementsByClassName("answerBtn")
-    for (var i = 0; i < answerBtns.length; i++) {
-        answerBtns[i].addEventListener("click", answerButtons);
     }
 }
 
@@ -138,4 +147,30 @@ function clearHighscoresList() {
     while (highscoresList.childNodes.length > 0) {
         highscoresList.removeChild(highscoresList.childNodes[0]);
     }
+}
+
+function updateTimer() {
+    // Check for <0 just in case - can happen because 10 seconds subtracted for wrong answers!
+    if (timerVal <= 0) {
+        goToPage(lastPage);
+        alert("Time's up!");
+    }
+    else {
+        timerVal--; // decrement timer
+        document.getElementById("timerValue").textContent = timerVal.toString(); // display current timer value
+    }
+}
+
+function goToPage(nextPg) {
+    // If quiz is done, stop timer, update score on Complete section
+    if (nextPg === lastPage) {
+        clearInterval(interval);
+        document.getElementById("finalScore").textContent = timerVal.toString();
+    }
+
+    // Hide everything, then determine which sections to unhide
+    hideAll();
+
+    // Advance to next page
+    document.getElementsByName(nextPg.toString())[0].hidden = false;
 }
